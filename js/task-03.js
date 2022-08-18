@@ -1,3 +1,6 @@
+const listRef = document.querySelector('ul');
+
+
 const images = [
   {
     url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
@@ -12,3 +15,12 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+const imgList = images.map(({ url, alt }) => {
+const galleryItemEl = `<li><img src=${url} alt=${alt} width = 400 height = 300></li>`;
+  return galleryItemEl;
+});
+  listRef.insertAdjacentHTML('beforeend', imgList.join(''));
+ 
+  listRef.style.display = "flex";
+  
