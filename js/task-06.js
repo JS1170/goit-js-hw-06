@@ -1,29 +1,19 @@
-// Завдання 6
-// Напиши скрипт, який під час втрати фокусу на інпуті 
-// (подія blur), перевіряє його вміст щодо правильної кількості 
-// введених символів.
+const attributeValue = document.querySelector('#validation-input');
 
-// <input
-//   type="text"
-//   id="validation-input"
-//   data-length="6"
-//   placeholder="Please enter 6 symbols"
-// />
-// Яка кількість смиволів повинна бути в інпуті, зазначається 
-// в його атрибуті data - length.
-// Якщо введена правильна кількість символів, то border інпуту 
-// стає зеленим, якщо неправильна кількість - червоним.
-// Для додавання стилів використовуй CSS-класи valid і invalid, 
-// які ми вже додали у вихідні файли завдання.
+attributeValue.addEventListener('blur', onBlur);
 
-// #validation-input {
-//   border: 3px solid #bdbdbd;
-// }
+function onBlur(event) {
+    const attributeLength = attributeValue.dataset.length;
+    const attributeText = event.target.value;
+    console.log(attributeText);
 
-// #validation-input.valid {
-//   border-color: #4caf50;
-// }
+    attributeValue.classList.remove('valid', 'invalid')
+    if ((attributeText.length) === Number(attributeLength)) {
+        attributeValue.classList.add('valid');
+    } else {
+        attributeValue.classList.add('invalid');
+        console.log(Number(attributeValue.dataset.length));
+    }
+}
 
-// #validation-input.invalid {
-//   border-color: #f44336;
-// }
+
